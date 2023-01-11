@@ -6,6 +6,7 @@ const bookshelf = new Bookshelf(bookshelfElement);
 bookshelf.seed(bookData);
 
 //#endregion Initialization
+//===========================================================
 
 // --------------------------
 //#region Favorite Feature
@@ -18,6 +19,22 @@ updateBtn.addEventListener("click", () => {
 });
 
 //#endregion Favorite Feature
+//===========================================================
+
+// --------------------------
+//#region Average Books Feature
+// --------------------------
+const avgCount = document.querySelector(".avgNumBooks");
+const updateAvgBtn = document.querySelector(".avgUpdateBtn");
+updateBtn.addEventListener("click", () => {
+  favCount.textContent = bookshelf.findAvgSubjectNumber();
+});
+
+const avgSubjectNum = document.querySelector(".avgSubjectNum");
+avgSubjectNum.innerText = bookshelf.findAvgSubjectNumber(); // with this I get a 0 in my field, but that's good, right? Just means I need to iron out the math and I'll get the right number.
+
+//#endregion avg books Feature
+//===========================================================
 
 // --------------------------
 //#region Searching
@@ -33,6 +50,7 @@ searchBtn.addEventListener("click", () => {
 });
 
 //#endregion Searching
+//===========================================================
 
 // --------------------------
 //#region Sorting
@@ -54,3 +72,4 @@ sortBy.addEventListener("change", () => {
 });
 
 //#endregion Sorting
+//===========================================================

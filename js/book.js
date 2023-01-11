@@ -31,6 +31,7 @@ function Book(authors, language, subject, title) {
       favButton.textContent = this.isFavorite ? "❤️" : "♡";
     });
 
+    // 
     return li;
   };
 }
