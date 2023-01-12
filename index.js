@@ -6,7 +6,7 @@ const bookshelf = new Bookshelf(bookshelfElement);
 bookshelf.seed(bookData);
 
 //#endregion Initialization
-//===========================================================
+//==================================
 
 // --------------------------
 //#region Favorite Feature
@@ -19,7 +19,7 @@ updateBtn.addEventListener("click", () => {
 });
 
 //#endregion Favorite Feature
-//===========================================================
+//==================================
 
 // --------------------------
 //#region Average Books Feature
@@ -28,7 +28,7 @@ const avgSubjectNum = document.querySelector(".avgNumBooks");
 avgSubjectNum.innerText = bookshelf.findAvgSubjectNumber(); // with this I get a 0 in my field, but that's good, right? Just means I need to iron out the math and I'll get the right number.
 
 //#endregion avg books Feature
-//===========================================================
+//==================================
 // --------------------------
 //#region non eng books
 // --------------------------
@@ -36,7 +36,7 @@ const nonEngNum = document.querySelector(".nonEngBooks");
 nonEngNum.innerText = bookshelf.findNonEngNumber(); // with this I get a 0 in my field, but that's good, right? Just means I need to iron out the math and I'll get the right number.
 
 //#endregion avg books Feature
-//===========================================================
+//==================================
 
 
 // --------------------------
@@ -53,8 +53,37 @@ searchBtn.addEventListener("click", () => {
 });
 
 //#endregion Searching
-//===========================================================
+//==================================
 
+
+// --------------------------
+//#region Adding Books
+// --------------------------
+
+const addBookBtn = document.querySelector(".addBookBtn");
+addBookBtn.addEventListener("click", () => {
+  const newAuthInput = document.querySelector(".addAuth");
+  const newLangInput = document.querySelector(".addLang");
+  const newSubjectInput = document.querySelector(".addSubject");
+  const newTitleInput = document.querySelector(".addTitle");
+
+  //i need to push new object to bookData
+  const newBook = {
+    author: newAuthInput.value,
+    language: newLangInput.value,
+    subject: newSubjectInput.value,
+    title: newTitleInput.value,
+  }
+  bookData.unshift(newBook);
+  //I need to take my data from the consts I made here and input those into the bookInfo."---" properties.
+  
+  //use input from the html to make a new book .addBook
+  //render bookshelf w new book
+
+});
+
+//#endregion Searching
+//==================================
 // --------------------------
 //#region Sorting
 // --------------------------
@@ -75,4 +104,4 @@ sortBy.addEventListener("change", () => {
 });
 
 //#endregion Sorting
-//===========================================================
+//==================================

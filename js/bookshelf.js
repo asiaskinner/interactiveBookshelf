@@ -9,7 +9,7 @@ function Bookshelf(htmlElement, books = []) {
   this.htmlElement = htmlElement;
   this.visibleBooks = books;
 
-  /**
+  /** Process an array of raw book information to
    * Process an array of raw book information
    * to initialize Bookshelf properties
    * @param {{author: string[], language: string, subject: string[], title: string}[]} data an array of book data
@@ -22,11 +22,10 @@ function Bookshelf(htmlElement, books = []) {
         bookInfo.language,
         bookInfo.subject,
         bookInfo.title,
+
         bookInfo.numPages = Math.floor(Math.random() * 200) + 1,
-        console.log(bookInfo.numPages),
-    //ternary opperator
         bookInfo.category = bookInfo.numPages < 100 ? "Short Story" : "Novel",
-        console.log(bookInfo.category)
+        // console.log(bookInfo.numPages, bookInfo.category)
       );
       this.addBook(book);
     });
@@ -37,8 +36,22 @@ function Bookshelf(htmlElement, books = []) {
 
     this.render();
   };
+    /** Users can enter book title, author, subject,language and add new Books.
+     * The Bookshelf instance is updated accordingly.
+     * The Bookshelf instance renders Books accurately.
+    
+    
+   * 
+   */
+  //create html input field for book title, author, subjects, and language
+  //create addBook button
+  //addEventListener on addBook button updates Bookshelf and re-renders Bookshelf
 
-  /**
+                        //i need a function that takes the input values recieved by index.js and append them to the end of the books array
+
+    // this.addNewBook()
+
+  /** Add a book to bookshelf
    * Add a book to the Bookshelf
    * @param {Book} book
    */
@@ -46,7 +59,7 @@ function Bookshelf(htmlElement, books = []) {
     this.books.push(book);
   };
 
-  /**
+  /** use bookArray to rerender DOM elem for this Bookshelf
    * Use internal Book array to rerender the
    * existing DOM element for this Bookshelf.
    */
@@ -67,11 +80,12 @@ function Bookshelf(htmlElement, books = []) {
       0
     );
   };
-//==================================================
-/**
+  //==================================================
+  /** ADDING PROPERTIES
    * @builds new properties, numPages and category. numpages is randomly generated for each book. if the book has more than 100 pages it's category is novel, otherwise the category is short story
    */
-
+  ///////I OVER-THOUGHT THIS SECTION (adding properties/////////////
+  /** Logic for adding properties
   //add numPages property to book object
     //value of numPages is a random number between 0-200
   //add category property to book object
@@ -86,24 +100,26 @@ function Bookshelf(htmlElement, books = []) {
 //     console.log(book.category);
 
 //   };
-
-//==================================================
-/**
+*/
+  //==================================================
+  /**@returns the number of non-english books
    * @returns the number of non-english books
    */
+
+  /** Logic for finding non-eng titles number
   // so I want to return an array like I did before
   //cycle through the books and only add to the array if book.language !=== "en"
   // I need to use reduce to go through all this.
   
-  // iterate through array... add 1 if language is not english...
+  // iterate through array... add 1 if language is not english...*/
 
-  this.findNonEngNumber = function() {
-      
-      return books.reduce(
-        (count, book) => (book.language !== "en" ? count + 1 : count), 0);
-      
-  }
-    
+  this.findNonEngNumber = function () {
+    return books.reduce(
+      (count, book) => (book.language !== "en" ? count + 1 : count),
+      0
+    );
+  };
+  /** Code that didn't work
   // const sum = bookData.reduce((acc, curr) => {
   //   return 
   // }
@@ -115,20 +131,13 @@ function Bookshelf(htmlElement, books = []) {
   // },[],);
 
   //   return sum.length;
+*/
 
-
-
-//==================================================
-/**
+  //==================================================
+  /**@returns the avg number of book subjects
    * @returns the avg number of book subjects
    */
-
-
-  //what I think is happening: in sumBooks I want the 
-    this.findAvgSubjectNumber = () => {
-      const bookSum = bookData.reduce((acc, curr) => [...acc, ...curr.subject],[],);
-
-return Math.floor(bookSum.length/books.length);
+  /** Logic for find avg subject number and code that didn't work
     //  const totalBooks = bookData.length;
       //WOO I got NaN!
 //I want to divide the total number of array indexes in the Subjects key and divide that by bookData.length
@@ -157,13 +166,10 @@ return Math.floor(bookSum.length/books.length);
 //divide sum of all subject by the length of book array
 // console.log(sum);
 
-
-
       // const sumSubjects = books.(books, books[i][2].length)
       //   let sum = 0;
       //   books.forEach(subject => {sum += subject[subject];});
-      
-      
+            
 // console.log("total declared")
 
 //       books.forEach(book => { 
@@ -184,13 +190,20 @@ return Math.floor(bookSum.length/books.length);
       // console.log("hello")
       // return avgSubject;
     };
-//----------------------------------------------
+    */
 
+  this.findAvgSubjectNumber = () => {
+    const bookSum = bookData.reduce(
+      (acc, curr) => [...acc, ...curr.subject],
+      []
+    );
 
+    return Math.floor(bookSum.length / books.length);
+  };
 
+  //----------------------------------------------
 
-
-  /**
+  /** Filter Visible Books
    * Filter visible books according to a given criteria function
    * @param {(book: Book) => boolean} criteria
    */
@@ -207,4 +220,9 @@ return Math.floor(bookSum.length/books.length);
     this.visibleBooks.sort(compareFn);
     this.render();
   };
-}
+  //-----------------------------------------
+
+
+
+
+}//End of function Bookshelf()
