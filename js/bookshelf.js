@@ -26,7 +26,21 @@ function Bookshelf(htmlElement, books = []) {
         bookInfo.numPages = Math.floor(Math.random() * 200) + 1,
         bookInfo.category = bookInfo.numPages < 100 ? "Short Story" : "Novel",
         // console.log(bookInfo.numPages, bookInfo.category)
+        
       );
+      const newAuthInput = document.querySelector(".addAuth").value;
+        const newLangInput = document.querySelector(".addLang").value;
+        const newSubjectInput = document.querySelector(".addSubject").value;
+        const newTitleInput = document.querySelector(".addTitle").value;
+      const userMadeBook = new Book(newAuthInput.author,
+        newLangInput.language,
+        newSubjectInput.subject,
+        newTitleInput.title)
+        
+
+        
+      
+      this.addBook(userMadeBook);
       this.addBook(book);
     });
 
