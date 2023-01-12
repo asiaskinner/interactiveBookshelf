@@ -24,17 +24,20 @@ updateBtn.addEventListener("click", () => {
 // --------------------------
 //#region Average Books Feature
 // --------------------------
-const avgCount = document.querySelector(".avgNumBooks");
-const updateAvgBtn = document.querySelector(".avgUpdateBtn");
-updateBtn.addEventListener("click", () => {
-  favCount.textContent = bookshelf.findAvgSubjectNumber();
-});
-
-const avgSubjectNum = document.querySelector(".avgSubjectNum");
+const avgSubjectNum = document.querySelector(".avgNumBooks");
 avgSubjectNum.innerText = bookshelf.findAvgSubjectNumber(); // with this I get a 0 in my field, but that's good, right? Just means I need to iron out the math and I'll get the right number.
 
 //#endregion avg books Feature
 //===========================================================
+// --------------------------
+//#region non eng books
+// --------------------------
+const nonEngNum = document.querySelector(".nonEngBooks");
+nonEngNum.innerText = bookshelf.findNonEngNumber(); // with this I get a 0 in my field, but that's good, right? Just means I need to iron out the math and I'll get the right number.
+
+//#endregion avg books Feature
+//===========================================================
+
 
 // --------------------------
 //#region Searching
