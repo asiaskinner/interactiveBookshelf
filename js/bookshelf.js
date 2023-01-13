@@ -28,22 +28,12 @@ function Bookshelf(htmlElement, books = []) {
         // console.log(bookInfo.numPages, bookInfo.category)
         
       );
-      const newAuthInput = document.querySelector(".addAuth").value;
-        const newLangInput = document.querySelector(".addLang").value;
-        const newSubjectInput = document.querySelector(".addSubject").value;
-        const newTitleInput = document.querySelector(".addTitle").value;
-      const userMadeBook = new Book(newAuthInput.author,
-        newLangInput.language,
-        newSubjectInput.subject,
-        newTitleInput.title)
-        
 
-        
       
-      this.addBook(userMadeBook);
+      // this.addBook(userMadeBook);
       this.addBook(book);
     });
-
+console.log(this)
     // Prepare and sort visible books
     this.visibleBooks = this.books;
     this.sortVisibleBooks((a, b) => a.title.localeCompare(b.title));

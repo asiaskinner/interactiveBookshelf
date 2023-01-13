@@ -68,13 +68,14 @@ addBookBtn.addEventListener("click", () => {
   const newTitleInput = document.querySelector(".addTitle");
 
   //i need to push new object to bookData
-  const newBook = {
+  const newBook = [{
     author: newAuthInput.value,
     language: newLangInput.value,
     subject: newSubjectInput.value,
     title: newTitleInput.value,
-  }
-  bookData.unshift(newBook);
+  }]
+  
+  bookshelf.seed(newBook);
   //I need to take my data from the consts I made here and input those into the bookInfo."---" properties.
   
   //use input from the html to make a new book .addBook
